@@ -19,14 +19,14 @@ jobs:
     - name: Ejecutar Pruebas (CI)
       run: pytest test_app.py
 
-validacion-infraestructura:
-  needs: integracion-continua # Solo se ejecuta si Python pasa las pruebas
-  runs-on: ubuntu-latest
-  steps:
-  - uses: actions/checkout@v3
-  - name: Instalar Terraform
-    uses: hashicorp/setup-terraform@v2
-  - name: Terraform Init
-    run: terraform init
-  - name: Validar Sintaxis IaC (Automatización)
-    run: terraform validate
+  validacion-infraestructura:
+    needs: integracion-continua # Solo se ejecuta si Python pasa las pruebas
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Instalar Terraform
+      uses: hashicorp/setup-terraform@v2
+    - name: Terraform Init
+      run: terraform init
+    - name: Validar Sintaxis IaC (Automatización)
+      run: terraform validate
